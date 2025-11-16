@@ -11,6 +11,7 @@ import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
+import ProductLanding from './pages/ProductLanding';
 
 function App() {
   return (
@@ -28,7 +29,8 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path = '*' element={<NotFound/>} />
+            <Route path="/product" element={<ProductLanding />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer />
