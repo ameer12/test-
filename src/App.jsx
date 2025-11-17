@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
-import Home from './pages/Home';
+import ProductLanding from './pages/ProductLanding'; // ← صارت الصفحة الرئيسية
 import Properties from './pages/Properties';
 import PropertyDetail from './pages/PropertyDetail';
 import Property3D from './pages/Property3D';
@@ -11,7 +11,6 @@ import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import NotFound from './pages/NotFound';
-import ProductLanding from './pages/ProductLanding';
 
 function App() {
   return (
@@ -20,7 +19,7 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<ProductLanding />} /> {/* ← تظهر مباشرة */}
             <Route path="/properties" element={<Properties />} />
             <Route path="/properties/:id" element={<PropertyDetail />} />
             <Route path="/property-3d" element={<Property3D />} />
@@ -29,7 +28,6 @@ function App() {
             <Route path="/faq" element={<FAQ />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
-            <Route path="/product" element={<ProductLanding />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
