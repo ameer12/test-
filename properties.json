@@ -1,0 +1,7 @@
+[
+  { "id": 1, "city": "New York", "bedrooms": 2, "price": 1100 },
+  { "id": 2, "city": "San Francisco", "bedrooms": 1, "price": 2000 },
+  { "id": 3, "city": "New York", "bedrooms": 1, "price": 900 },
+  { "id": 4, "city": "Los Angeles", "bedrooms": 3, "price": 1800 },
+  { "id": 5, "city": "New York", "bedrooms": 3, "price": 1300 }
+]
