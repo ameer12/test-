@@ -63,15 +63,7 @@ function PropertyDetail() {
     images: [
       'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80',
       'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&q=80',
-      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80'
-    ],
-    agent: {
-      name: 'John Doe',
-      phone: '+1 (555) 123-4567',
-      email: 'john@realestate.com',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80'
-    }
-  };
+      'https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=800&q=80
 
   const shareUrl = window.location.href;
 
