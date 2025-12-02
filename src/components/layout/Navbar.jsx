@@ -17,16 +17,18 @@ function Navbar() {
     <nav className="bg-white shadow-sm">
       <div className="container">
         <div className="flex justify-between h-16">
+          {/* Logo */}
           <div className="flex">
             <Link to="/" className="flex items-center">
               <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="15" cy="20" r="10" stroke="#0682ff"/>
-                <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3"/>
-              </svg>  
+                <circle cx="15" cy="20" r="10" stroke="#0682ff" />
+                <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3" />
+              </svg>
               <span className="text-2xl font-bold text-primary-600 mt-1.5">City Fund</span>
             </Link>
           </div>
 
+          {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navigation.map((item) => (
               <Link
@@ -37,11 +39,15 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <button className="btn">
-              Connect
-            </button>
+            <Link
+              to="/login"
+              className="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition"
+            >
+              تسجيل الدخول
+            </Link>
           </div>
 
+          {/* Mobile Menu Button */}
           <div className="flex items-center md:hidden">
             <button
               type="button"
@@ -53,6 +59,7 @@ function Navbar() {
           </div>
         </div>
 
+        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
             <div className="pt-2 pb-3 space-y-1">
@@ -66,12 +73,13 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700"
+              <Link
+                to="/login"
+                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3"
                 onClick={() => setIsOpen(false)}
               >
-                Connect
-              </button>
+                تسجيل الدخول
+              </Link>
             </div>
           </div>
         )}
