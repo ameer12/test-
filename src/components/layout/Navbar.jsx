@@ -20,14 +20,13 @@ function Navbar() {
           <div className="flex">
             <Link to="/" className="flex items-center">
               <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="15" cy="20" r="10" stroke="#0682ff"/>
-                  <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3"/>
+                <circle cx="15" cy="20" r="10" stroke="#0682ff"/>
+                <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3"/>
               </svg>  
-              <span className="text-2xl font-bold text-primary-600 mt-1.5">BestCity</span>
+              <span className="text-2xl font-bold text-primary-600 mt-1.5">City Fund</span>
             </Link>
           </div>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex md:items-center md:space-x-8">
             {navigation.map((item) => (
               <Link
@@ -38,14 +37,11 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <button
-              className="btn"
-            >
+            <button className="btn">
               Connect
             </button>
           </div>
 
-          {/* Mobile menu button */}
           <div className="flex items-center md:hidden">
             <button
               type="button"
@@ -57,7 +53,6 @@ function Navbar() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
             <div className="pt-2 pb-3 space-y-1">
