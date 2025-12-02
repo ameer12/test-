@@ -1,10 +1,38 @@
-  position: relative;
+ position: relative;
   min-height: 100vh;
   background-color: #f9fbff;
   display: flex;
   justify-content: center;
   align-items: center;
   overflow: hidden;
+  padding-top: 80px; /* space for header */
+}
+
+.auth-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.5rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.auth-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e3a8a;
+}
+
+.auth-signin-button {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
 }
 
 .auth-box {
