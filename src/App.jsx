@@ -1,16 +1,18 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import Navbar from './components/layout/Navbar'
-import Footer from './components/layout/Footer'
-import Properties from './pages/Properties'
-import PropertyDetail from './pages/PropertyDetail'
-import Property3D from './pages/Property3D'
-import About from './pages/About'
-import FAQ from './pages/FAQ'
-import Privacy from './pages/Privacy'
-import Blog from './pages/Blog'
-import BlogPost from './pages/BlogPost'
-import NotFound from './pages/NotFound'
-import Chat from './pages/Chat'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import Navbar from './components/layout/Navbar';
+import Footer from './components/layout/Footer';
+import Properties from './pages/Properties';
+import PropertyDetail from './pages/PropertyDetail';
+import Property3D from './pages/Property3D';
+import About from './pages/About';
+import FAQ from './pages/FAQ';
+import Privacy from './pages/Privacy';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
+import NotFound from './pages/NotFound';
+import Chat from './pages/Chat';
+import Login from './components/Auth/Login';
+import Signup from './components/Auth/Signup';
 
 function App() {
   return (
@@ -29,6 +31,8 @@ function App() {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/chat" element={<Chat />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
@@ -54,7 +58,7 @@ function App() {
         </Link>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
