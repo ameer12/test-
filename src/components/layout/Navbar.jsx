@@ -1,9 +1,15 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [loggedInUser, setLoggedInUser] = useState(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem('loggedInUser');
+    setLoggedInUser(user);
+  }, []);
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -39,12 +45,16 @@ function Navbar() {
                 {item.name}
               </Link>
             ))}
-            <Link
-              to="/login"
-              className="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition"
-            >
-              تسجيل الدخول
-            </Link>
+            {loggedInUser ? (
+              <span className="text-sm font-medium text-primary-600">{loggedInUser}</span>
+            ) : (
+              <Link
+                to="/login"
+                className="bg-primary-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-700 transition"
+              >
+                Sign In
+              </Link>
+            )}
           </div>
 
           {/* Mobile Menu Button */}
@@ -73,13 +83,19 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <Link
-                to="/login"
-                className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3"
-                onClick={() => setIsOpen(false)}
-              >
-                تسجيل الدخول
-              </Link>
+              {loggedInUser ? (
+                <span className="block px-3 py-2 text-base font-medium text-primary-600 mx-3">
+                  {loggedInUser}
+                </span>
+              ) : (
+                <Link
+                  to="/login"
+                  className="block px-3 py-2 text-base font-medium text-white bg-primary-600 hover:bg-primary-700 rounded-md mx-3"
+                  onClick={() => setIsOpen(false)}
+                >
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         )}
