@@ -1,4 +1,18 @@
-const walletAddress = '0xdfc8ae8f1d127f59292a7ec5dea52dde0b9ffe91';
+import { ethers } from 'ethers';
+
+function getOrCreateWallet() {
+  const savedKey = localStorage.getItem('privateKey');
+  if (savedKey) {
+    return new ethers.Wallet(savedKey);
+  } else {
+    const wallet = ethers.Wallet.createRandom();
+    localStorage.setItem('privateKey', wallet.privateKey);
+    localStorage.setItem('walletAddress', wallet.address);
+    return wallet;
+  }
+}
+
+export const receivingAddress = localStorage.getItem('walletAddress') || getOrCreateWallet().address;
 
 export const supportedNetworks = [
   {
@@ -42,5 +56,3 @@ export const supportedNetworks = [
     logo: '/logos/solana.png',
   },
 ];
-
-export const receivingAddress = walletAddress;
