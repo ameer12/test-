@@ -22,15 +22,23 @@ function Navbar() {
   return (
     <nav className="bg-white shadow-sm">
       <div className="container">
-        <div className="flex justify-between h-16">
-          {/* Logo */}
-          <div className="flex">
+        <div className="flex justify-between items-center h-16">
+          {/* Logo + Wallet Button (Desktop) */}
+          <div className="flex items-center space-x-4">
             <Link to="/" className="flex items-center">
               <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="15" cy="20" r="10" stroke="#0682ff" />
                 <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3" />
               </svg>
               <span className="text-2xl font-bold text-primary-600 mt-1.5">City Fund</span>
+            </Link>
+
+            {/* Wallet Button (Desktop) */}
+            <Link
+              to="/wallet"
+              className="hidden md:inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition"
+            >
+              💳 Sign in your wallet
             </Link>
           </div>
 
@@ -57,8 +65,8 @@ function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
+          {/* Mobile Menu Button + Wallet Button */}
+          <div className="flex items-center md:hidden space-x-2">
             <button
               type="button"
               className="text-secondary-600 hover:text-primary-600"
@@ -66,6 +74,14 @@ function Navbar() {
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
+
+            {/* Wallet Button (Mobile) */}
+            <Link
+              to="/wallet"
+              className="bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-blue-700 transition"
+            >
+              💳
+            </Link>
           </div>
         </div>
 
