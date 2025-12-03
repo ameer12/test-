@@ -14,14 +14,6 @@ import Chat from './pages/Chat';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
 
-// Wallet-related imports
-import Wallet from './pages/Wallet';
-import CreateWallet from './pages/CreateWallet';
-import SwapPanel from './components/SwapPanel';
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 function App() {
   return (
     <Router>
@@ -29,7 +21,6 @@ function App() {
         <Navbar />
         <main className="flex-grow">
           <Routes>
-            {/* Real estate routes */}
             <Route path="/" element={<Properties />} />
             <Route path="/properties" element={<Properties />} />
             <Route path="/properties/:id" element={<PropertyDetail />} />
@@ -42,13 +33,6 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-
-            {/* Wallet routes */}
-            <Route path="/wallet" element={<Wallet />} />
-            <Route path="/wallet/create" element={<CreateWallet />} />
-            <Route path="/wallet/swap" element={<SwapPanel />} />
-
-            {/* Fallback */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
@@ -72,8 +56,6 @@ function App() {
         >
           💬 Chat with Bot
         </Link>
-
-        <ToastContainer />
       </div>
     </Router>
   );
