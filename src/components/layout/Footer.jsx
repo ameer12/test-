@@ -45,7 +45,7 @@ function Footer() {
             <ul className="space-y-2">
               <li className="flex items-center text-secondary-300 text-sm">
                 <FiPhone className="mr-2" />
-                <span>+1 (555) 123-4567</span>
+                <span>+44 20 7946 0958</span>
               </li>
               <li className="flex items-center text-secondary-300 text-sm">
                 <FiMail className="mr-2" />
@@ -53,7 +53,7 @@ function Footer() {
               </li>
               <li className="flex items-center text-secondary-300 text-sm">
                 <FiMapPin className="mr-2" />
-                <span>123 Property Street, Real City, RC 12345</span>
+                <span>221B Baker Street, London, UK</span>
               </li>
             </ul>
           </div>
