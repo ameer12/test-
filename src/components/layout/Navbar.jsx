@@ -22,20 +22,31 @@ function Navbar() {
   return (
     <nav className="bg-white shadow-sm">
       <div className="container">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex items-center space-x-4">
+        <div className="flex flex-row-reverse justify-between items-center h-16">
+          {/* Logo on the right */}
+          <div className="flex items-center space-x-4 space-x-reverse">
             <Link to="/" className="flex items-center">
               <svg width="30" height="35" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="15" cy="20" r="10" stroke="#0682ff" />
                 <circle cx="15" cy="20" r="6" stroke="#0682ff" strokeWidth="3" />
               </svg>
-              <span className="text-2xl font-bold text-primary-600 mt-1.5">City Fund</span>
+              <span className="text-2xl font-bold text-primary-600 mt-1.5 ml-2">City Fund</span>
             </Link>
           </div>
 
+          {/* Mobile Menu Button on the left */}
+          <div className="flex items-center md:hidden">
+            <button
+              type="button"
+              className="text-secondary-600 hover:text-primary-600"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+            </button>
+          </div>
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-8 md:space-x-reverse">
             {navigation.map((item) => (
               <Link
                 key={item.name}
@@ -56,23 +67,12 @@ function Navbar() {
               </Link>
             )}
           </div>
-
-          {/* Mobile Menu Button */}
-          <div className="flex items-center md:hidden">
-            <button
-              type="button"
-              className="text-secondary-600 hover:text-primary-600"
-              onClick={() => setIsOpen(!isOpen)}
-            >
-              {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
-          </div>
         </div>
 
         {/* Mobile Navigation */}
         {isOpen && (
           <div className="md:hidden">
-            <div className="pt-2 pb-3 space-y-1">
+            <div className="pt-2 pb-3 space-y-1 text-right">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
