@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../../styles/auth.css';
+import '../styles/auth.css';
 import { ethers } from 'ethers';
 
 function WalletAccess() {
-  const [mode, setMode] = useState('create'); // 'create' or 'import'
+  const [mode, setMode] = useState('create');
   const [privateKey, setPrivateKey] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
