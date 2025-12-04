@@ -13,8 +13,14 @@ import NotFound from './pages/NotFound';
 import Chat from './pages/Chat';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
-import WalletHub from './pages/WalletHub';
-import WalletAccess from './pages/WalletAccess'; // ✅ استيراد صفحة الوصول للمحفظة
+import WalletAccess from './pages/WalletAccess';
+
+// ✅ استيراد واجهة المحفظة الجديدة وصفحاتها
+import Wallet from './pages/Wallet';
+import Buy from './pages/Buy';
+import Swap from './pages/Swap';
+import Send from './pages/Send';
+import Receive from './pages/Receive';
 
 function App() {
   return (
@@ -35,8 +41,12 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
-            <Route path="/wallet" element={<WalletHub />} />
-            <Route path="/wallet/access" element={<WalletAccess />} /> {/* ✅ مسار الوصول للمحفظة */}
+            <Route path="/wallet" element={<Wallet />} />
+            <Route path="/wallet/buy" element={<Buy />} />
+            <Route path="/wallet/swap" element={<Swap />} />
+            <Route path="/wallet/send" element={<Send />} />
+            <Route path="/wallet/receive" element={<Receive />} />
+            <Route path="/wallet/access" element={<WalletAccess />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
