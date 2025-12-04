@@ -13,8 +13,7 @@ function Navbar() {
   }, []);
 
   const handleWalletClick = () => {
-    const hasWallet = localStorage.getItem('walletAddress');
-    navigate(hasWallet ? '/wallet' : '/wallet/create');
+    navigate('/wallet/access'); // ✅ توجيه مباشر لواجهة المحفظة الموحّدة
   };
 
   const navigation = [
