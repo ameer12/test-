@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/auth.css';
 import { ethers } from 'ethers';
+import '../styles/auth.css'; // تأكد أن الملف موجود وصحيح
 
 function WalletAccess() {
   const [mode, setMode] = useState('create');
@@ -10,10 +10,14 @@ function WalletAccess() {
   const navigate = useNavigate();
 
   const handleCreate = () => {
-    const newWallet = ethers.Wallet.createRandom();
-    localStorage.setItem('privateKey', newWallet.privateKey);
-    localStorage.setItem('walletAddress', newWallet.address);
-    navigate('/wallet');
+    try {
+      const newWallet = ethers.Wallet.createRandom();
+      localStorage.setItem('privateKey', newWallet.privateKey);
+      localStorage.setItem('walletAddress', newWallet.address);
+      navigate('/wallet');
+    } catch (err) {
+      setError('Failed to create wallet');
+    }
   };
 
   const handleImport = (e) => {
@@ -36,13 +40,21 @@ function WalletAccess() {
       <div className="auth-box">
         <div className="flex justify-center mb-6 space-x-4">
           <button
-            onClick={() => setMode('create')}
+            onClick={() => {
+              setMode('create');
+              setError('');
+              setPrivateKey('');
+            }}
             className={`auth-tab ${mode === 'create' ? 'active-tab' : ''}`}
           >
             🪙 Create Wallet
           </button>
           <button
-            onClick={() => setMode('import')}
+            onClick={() => {
+              setMode('import');
+              setError('');
+              setPrivateKey('');
+            }}
             className={`auth-tab ${mode === 'import' ? 'active-tab' : ''}`}
           >
             🔑 Import Wallet
@@ -56,6 +68,7 @@ function WalletAccess() {
             <button onClick={handleCreate} className="auth-button mt-6">
               Generate Wallet
             </button>
+            {error && <p className="auth-error">{error}</p>}
           </div>
         )}
 
@@ -70,11 +83,14 @@ function WalletAccess() {
               value={privateKey}
               onChange={(e) => setPrivateKey(e.target.value)}
               rows={4}
+              required
             />
 
-            {error && <p style={{ color: 'red', textAlign: 'center' }}>{error}</p>}
+            {error && <p className="auth-error">{error}</p>}
 
-            <button type="submit" className="auth-button">Import</button>
+            <button type="submit" className="auth-button">
+              Import
+            </button>
           </form>
         )}
       </div>
