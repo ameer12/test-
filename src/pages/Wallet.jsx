@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   FaTelegramPlane,
   FaThumbtack,
@@ -11,19 +11,17 @@ import {
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-toast.configure();
-
 const walletAddress = '0xdfc8ae8f1d127f59292a7ec5dea52dde0b9ffe91';
 
 const networks = [
-  { name: 'Ethereum', symbol: 'ETH', logo: '/logos/eth.png' },
-  { name: 'Base', symbol: 'BASE', logo: '/logos/base.png' },
-  { name: 'Linea', symbol: 'LINEA', logo: '/logos/linea.png' },
-  { name: 'Arbitrum', symbol: 'ARB', logo: '/logos/arbitrum.png' },
-  { name: 'BNB Chain', symbol: 'BNB', logo: '/logos/bnb.png' },
-  { name: 'OP', symbol: 'OP', logo: '/logos/op.png' },
-  { name: 'Polygon', symbol: 'MATIC', logo: '/logos/polygon.png' },
-  { name: 'Solana', symbol: 'SOL', logo: '/logos/solana.png' },
+  { name: 'Ethereum', symbol: 'ETH' },
+  { name: 'Base', symbol: 'BASE' },
+  { name: 'Linea', symbol: 'LINEA' },
+  { name: 'Arbitrum', symbol: 'ARB' },
+  { name: 'BNB Chain', symbol: 'BNB' },
+  { name: 'OP', symbol: 'OP' },
+  { name: 'Polygon', symbol: 'MATIC' },
+  { name: 'Solana', symbol: 'SOL' },
 ];
 
 export default function Wallet() {
@@ -31,6 +29,10 @@ export default function Wallet() {
   const [balance, setBalance] = useState(0);
   const [change, setChange] = useState(0);
   const [tokens, setTokens] = useState([]);
+
+  useEffect(() => {
+    toast.configure();
+  }, []);
 
   const copyAddress = (address) => {
     navigator.clipboard.writeText(address);
@@ -79,7 +81,7 @@ export default function Wallet() {
           {balance} <span className="text-lg">$</span>
         </div>
         <div className="text-sm text-gray-500 mt-1">
-          {change.toFixed(2)}$ <span className="text-xs">({((change / (balance || 1)) * 100).toFixed(2)}%)</span>
+          {change.toFixed(2)}$ <span className="text-xs">({balance > 0 ? `${((change / balance) * 100).toFixed(2)}%` : '0.00%'})</span>
         </div>
       </div>
 
@@ -97,7 +99,7 @@ export default function Wallet() {
         </button>
       </div>
 
-      {/* Send Panel */}
+      {/* Token List */}
       <div className="mb-6">
         <input
           type="text"
@@ -108,8 +110,8 @@ export default function Wallet() {
         {tokens.length === 0 ? (
           <div className="text-sm text-gray-500">No tokens available</div>
         ) : (
-          tokens.map((token) => (
-            <div key={token.symbol} className="flex justify-between items-center bg-white border rounded-md p-3 mb-2">
+          tokens.map((token, index) => (
+            <div key={`${token.symbol}-${index}`} className="flex justify-between items-center bg-white border rounded-md p-3 mb-2">
               <div>
                 <div className="font-semibold">{token.name}</div>
                 <div className="text-xs text-gray-500">{token.network}</div>
@@ -127,12 +129,9 @@ export default function Wallet() {
       <div className="space-y-4">
         {networks.map((net) => (
           <div key={net.symbol} className="flex justify-between items-center bg-white border rounded-md p-3">
-            <div className="flex items-center space-x-2">
-              <img src={net.logo} alt={net.name} className="w-6 h-6" />
-              <div>
-                <div className="font-semibold text-sm">{net.name}</div>
-                <div className="text-xs text-gray-500">{walletAddress}</div>
-              </div>
+            <div>
+              <div className="font-semibold text-sm">{net.name}</div>
+              <div className="text-xs text-gray-500">{walletAddress}</div>
             </div>
             <button onClick={() => copyAddress(walletAddress)}>
               <FiCopy className="text-gray-600" />
@@ -145,10 +144,7 @@ export default function Wallet() {
           <h4 className="text-sm font-semibold text-gray-600 mb-2">Your Assets</h4>
           {networks.map((net) => (
             <div key={net.symbol} className="flex justify-between items-center bg-gray-50 border rounded-md p-3 mb-2">
-              <div className="flex items-center space-x-2">
-                <img src={net.logo} alt={net.name} className="w-5 h-5" />
-                <span className="text-sm">{net.name}</span>
-              </div>
+              <span className="text-sm">{net.name}</span>
               <span className="text-sm text-gray-500">0</span>
             </div>
           ))}
