@@ -13,6 +13,7 @@ import NotFound from './pages/NotFound';
 import Chat from './pages/Chat';
 import Login from './components/Auth/Login';
 import Signup from './components/Auth/Signup';
+import WalletHub from './pages/WalletHub'; // ✅ استيراد صفحة المحفظة
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
             <Route path="/chat" element={<Chat />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
+            <Route path="/wallet" element={<WalletHub />} /> {/* ✅ مسار المحفظة */}
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
