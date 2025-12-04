@@ -1,6 +1,13 @@
 import React, { useState } from 'react';
-import { FaTelegramPlane, FaThumbtack } from 'react-icons/fa';
-import { FiChevronUp, FiCopy } from 'react-icons/fi';
+import {
+  FaTelegramPlane,
+  FaThumbtack,
+  FaQrcode,
+} from 'react-icons/fa';
+import {
+  FiChevronUp,
+  FiCopy,
+} from 'react-icons/fi';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -27,11 +34,14 @@ export default function Wallet() {
 
   const copyAddress = (address) => {
     navigator.clipboard.writeText(address);
-    toast.success('Address copied ✓', { position: 'top-center', autoClose: 2000 });
+    toast.success('Address copied ✓', {
+      position: 'top-center',
+      autoClose: 2000,
+    });
   };
 
   return (
-    <div className="min-h-screen bg-white text-gray-800 font-sans p-4">
+    <div className="min-h-screen bg-white text-gray-800 font-sans p-4 pb-24">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <div className="relative">
@@ -51,12 +61,23 @@ export default function Wallet() {
             </div>
           )}
         </div>
+
+        <div className="flex items-center space-x-4">
+          <button title="Show QR Code">
+            <FaQrcode className="text-gray-600 text-lg" />
+          </button>
+          <button onClick={() => copyAddress(walletAddress)} title="Copy Address">
+            <FiCopy className="text-gray-600 text-lg" />
+          </button>
+        </div>
       </div>
 
       {/* Balance Section */}
       <div className="bg-gray-100 rounded-lg p-4 mb-4">
         <div className="text-sm font-semibold text-gray-600 mb-1">Balance</div>
-        <div className="text-3xl font-bold text-gray-800">{balance} <span className="text-lg">$</span></div>
+        <div className="text-3xl font-bold text-gray-800">
+          {balance} <span className="text-lg">$</span>
+        </div>
         <div className="text-sm text-gray-500 mt-1">
           {change.toFixed(2)}$ <span className="text-xs">({((change / (balance || 1)) * 100).toFixed(2)}%)</span>
         </div>
