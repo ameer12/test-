@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [loggedInUser, setLoggedInUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = localStorage.getItem('loggedInUser');
     setLoggedInUser(user);
   }, []);
+
+  const handleWalletClick = () => {
+    const hasWallet = localStorage.getItem('walletAddress');
+    navigate(hasWallet ? '/wallet' : '/wallet/create');
+  };
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -34,12 +40,12 @@ function Navbar() {
             </Link>
 
             {/* Wallet Button (Desktop) */}
-            <Link
-              to="/wallet"
+            <button
+              onClick={handleWalletClick}
               className="hidden md:inline-block bg-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-blue-700 transition"
             >
               💳 Sign in your wallet
-            </Link>
+            </button>
           </div>
 
           {/* Desktop Navigation */}
@@ -76,12 +82,12 @@ function Navbar() {
             </button>
 
             {/* Wallet Button (Mobile) */}
-            <Link
-              to="/wallet"
+            <button
+              onClick={handleWalletClick}
               className="bg-blue-600 text-white px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-blue-700 transition"
             >
               💳
-            </Link>
+            </button>
           </div>
         </div>
 
