@@ -5,8 +5,8 @@
   "packageManager": "pnpm@10.2.1",
   "type": "module",
   "dependencies": {
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-router-dom": "^6.26.1",
     "react-icons": "^5.3.0",
     "react-hot-toast": "^2.4.1",
@@ -36,7 +36,7 @@
     "helmet": "^7.1.0",
     "compression": "^1.7.4",
     "dotenv": "^16.4.5",
-    "multer": "^1.4.5-lts.1",
+    "multer": "^2.0.2",
     "sharp": "^0.33.5",
     "cloudinary": "^2.5.1",
     "date-fns": "^3.6.0",
@@ -56,10 +56,8 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/node": "^20.16.5",
-    "typescript": "^5.5.4",
     "vite": "^5.4.8",
     "@vitejs/plugin-react": "^4.3.1",
-    "@vitejs/plugin-react-swc": "^3.7.0",
     "autoprefixer": "^10.4.20",
     "postcss": "^8.4.41",
     "eslint": "^8.57.0",
@@ -79,8 +77,8 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
-    "build:prod": "NODE_ENV=production vite build",
+    "build": "vite build",
+    "build:prod": "vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --ext js,jsx,ts,tsx --fix",
@@ -96,4 +94,4 @@
     "node": ">=18.0.0",
     "pnpm": ">=8.0.0"
   }
-}
+  }
