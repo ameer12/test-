@@ -18,6 +18,22 @@ function App() {
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
+        <div
+          style={{
+            position: 'fixed',
+            top: 10,
+            left: 10,
+            background: '#e0ffe0',
+            padding: '8px 12px',
+            borderRadius: '6px',
+            fontWeight: 'bold',
+            zIndex: 9999,
+            boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
+          }}
+        >
+          setup ok – Ameer
+        </div>
+
         <Navbar />
         <main className="flex-grow">
           <Routes>
@@ -51,7 +67,7 @@ function App() {
             textDecoration: 'none',
             fontWeight: 'bold',
             boxShadow: '0 4px 12px rgba(0,0,0,0.2)',
-            zIndex: 1000
+            zIndex: 1000,
           }}
         >
           💬 Chat with Bot
