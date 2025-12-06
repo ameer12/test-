@@ -14,8 +14,8 @@
 
     "@walletconnect/web3-provider": "^1.7.8",
 
-    "@web3modal/ethereum": "3.3.1",
-    "@web3modal/react": "3.3.1",
+    "@web3modal/ethereum": "2.7.1",
+    "@web3modal/react": "2.7.1",
 
     "wagmi": "2.10.2",
     "viem": "2.9.30",
